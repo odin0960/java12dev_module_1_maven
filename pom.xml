@@ -10,8 +10,6 @@
 
   <name>MavenProject</name>
   <description>A simple MavenProject.</description>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,7 +27,6 @@
     <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
-      <!--            <version>${com.google.code.gson.version}</version>-->
       <version>2.10.1</version>
     </dependency>
 
@@ -45,51 +42,29 @@
       <artifactId>maven-assembly-plugin</artifactId>
       <version>3.6.0</version>
     </dependency>
-
   </dependencies>
 
   <build>
-
     <finalName>myname</finalName>
 
       <plugins>
-        <!-- Set Executable Class-->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.3.0</version>
-          <configuration>
-            <archive>
-              <manifest>
-                <addClasspath>true</addClasspath>
-                <classpathPrefix>lib/</classpathPrefix>
-                <!-- <mainClass>${start-class}</mainClass> -->
-                <mainClass>myname.App</mainClass>
-              </manifest>
-            </archive>
-          </configuration>
-        </plugin>
-
-        <!-- Maven Assembly Plugin -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
           <version>3.6.0</version>
-
           <configuration>
             <archive>
               <manifest>
                 <addClasspath>true</addClasspath>
                 <classpathPrefix>libs/</classpathPrefix>
-                <!-- <mainClass>${start-class}</mainClass> -->
                 <mainClass>myname.App</mainClass>
               </manifest>
             </archive>
             <descriptorRefs>
               <descriptorRef>jar-with-dependencies</descriptorRef>
             </descriptorRefs>
+            <appendAssemblyId>false</appendAssemblyId>
           </configuration>
-
           <executions>
             <execution>
               <id>make-assembly</id>
@@ -103,11 +78,4 @@
       </plugins>
   </build>
 
-  <reporting>
-    <plugins>
-      <plugin>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </reporting>
 </project>
